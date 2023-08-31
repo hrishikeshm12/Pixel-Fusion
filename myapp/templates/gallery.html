@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelFusion</title>
+    <!-- Link to your CSS files if needed -->
+    <!-- Add the following line to link your CSS file -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <!-- Link to Tailwind CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Link to Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Include the Semantic UI CSS CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link
+      rel="icon"
+      href="{% static 'images/logo-color.png' %}"
+      type="image/png"
+    />
+
+    <!-- Load Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-primary-bg-color text-primary-text-color font-sans">
+    <nav
+      class="semi-transparent-bg bg-primary-bg-color p-5 fixed w-full top-0 z-50"
+    >
+      <div class="container mx-auto flex items-center justify-between">
+        <a href="#" class="flex items-center text-white text-3xl font-semibold">
+          <img
+            src="{% static 'images/logo-no-bg.png' %}"
+            alt="Logo"
+            class="w-10 h-10 mr-2"
+          />
+          PixelFusion
+        </a>
+        <!-- Navbar for Small Devices (Mobile) -->
+        <div id="mobile-menu" class="hidden md:hidden">
+          <a
+            href="{% url 'mainpage' %}"
+            class="block px-4 py-2 text-primary-text-color hover:bg-primary-bg-color"
+            >Home</a
+          >
+          
+          <a
+            href="#ai-showcase-section"
+            class="block px-4 py-2 text-primary-text-color hover:bg-primary-bg-color"
+            >Gallery</a
+          >
+          <a
+            href="#about-section"
+            class="block px-4 py-2 text-primary-text-color hover:bg-primary-bg-color"
+            >About</a
+          >
+          
+        </div>
+
+        <!-- Mobile Dropdown Button -->
+        <div class="relative inline-block text-white md:hidden">
+            <button id="mobile-dropdown-button" class="w-6 h-6">
+                <img src="{% static 'images/menu.svg' %}" alt="Menu">
+            </button>
+            <!-- Dropdown Content -->
+            <div id="mobile-dropdown-content" class="hidden absolute right-0 mt-2 py-2 bg-primary-bg-color rounded-lg shadow-lg">
+                <a href="{% url 'mainpage' %}" class="block px-4 py-2 text-primary-text-color hover:bg-accent-color">Home</a>
+               
+                <a href="#ai-showcase-section" class="block px-4 py-2 text-primary-text-color hover:bg-accent-color">Gallery</a>
+                <a href="#about-section" class="block px-4 py-2 text-primary-text-color hover:bg-accent-color">About</a>
+                
+            </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex space-x-8">
+          <li>
+            <a href="{% url 'mainpage' %}" class="text-white text-lg"
+              > Home</a
+            >
+          </li>
+          
+          <li>
+            <a href="#ai-showcase-section" class="text-white text-lg"
+              > Gallery</a
+            >
+          </li>
+          <li>
+            <a href="#about-section" class="text-white text-lg"
+              > About</a
+            >
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+
+
+  
+    <section id="ai-showcase-section" class="bg-primary-bg-color py-20">
+      <div class="container mx-auto">
+          <h2 class="text-4xl font-semibold text-white mb-8">Image Showcase</h2>
+          
+          <div class="flex justify-center">
+              <div class="grid grid-cols-5 gap-8" id="image-container">
+                <!-- Image cards will be added here -->
+                <!-- Loop through the images and render them directly -->
+                {% for image in images %}
+                <div class="bg-white w-64 h-64 rounded p-4 relative overflow-hidden">
+                    <img src="{{ image.transformed_image }}" alt="Generated Image" class="bg-cover w-full h-full cursor-pointer">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-90 transition-opacity bg-gray-800">
+                        <div class="text-center">
+                            <p class="text-lg text-white font-semibold mb-2">
+                                Generated by {{ image.ai_model }}
+                            </p>
+                            <p class="text-sm text-gray-300">Style: {{ image.style_used }}</p>
+                            <p class="text-sm text-gray-300">Prompt: {{ image.prompt }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                  
+              </div>
+          </div>
+      </div>
+  </section>
+  
+
+  <script src="https://kit.fontawesome.com/3efe8700d9.js" crossorigin="anonymous"></script>
+
+    <script src="{% static 'js/image-script.js' %}"></script>
+
+
+
+
+</body>
+</html>

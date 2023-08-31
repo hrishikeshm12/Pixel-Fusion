@@ -1,0 +1,25 @@
+/* Add your CSS styles here */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.semi-transparent-bg {
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust the alpha value (0.6) for desired transparency */
+}
+
+.bg-primary-bg-color {
+    background-color: #111827;
+}
+
+.text-primary-text-color {
+    color: #FFFFFF;
+}
+
+.bg-accent-color {
+    background-color: #EE3E38;
+}
+
+.bg-accent-color-dark {
+    background-color: #BB2C27;
+}
+

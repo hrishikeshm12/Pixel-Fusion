@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelFusion</title>
+    <!-- Link to your CSS files if needed -->
+    <!-- Add the following line to link your CSS file -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <!-- Link to Tailwind CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Link to Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link
+      rel="icon"
+      href="{% static 'images/logo-color.png' %}"
+      type="image/png"
+    />
+
+    <!-- Load Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-primary-bg-color text-primary-text-color font-sans">
+    <nav
+      class="semi-transparent-bg bg-primary-bg-color p-5 fixed w-full top-0 z-50"
+    >
+      <div class="container mx-auto flex items-center justify-between">
+        <a href="#" class="flex items-center text-white text-3xl font-semibold">
+          <img
+            src="{% static 'images/logo-no-bg.png' %}"
+            alt="Logo"
+            class="w-10 h-10 mr-2"
+          />
+          PixelFusion
+        </a>
+        <!-- Navbar for Small Devices (Mobile) -->
+        <div id="mobile-menu" class="hidden md:hidden">
+          <a
+            href="#hero-section"
+            class="block px-4 py-2 text-primary-text-color hover:bg-primary-bg-color"
+            >Home</a
+          >
+          
+          <a
+            href="#ai-showcase-section"
+            class="block px-4 py-2 text-primary-text-color hover:bg-primary-bg-color"
+            >Examples</a
+          >
+          <a
+            href="#about-section"
+            class="block px-4 py-2 text-primary-text-color hover:bg-primary-bg-color"
+            >About</a
+          >
+          
+        </div>
+
+        <!-- Mobile Dropdown Button -->
+        <div class="relative inline-block text-white md:hidden">
+            <button id="mobile-dropdown-button" class="w-6 h-6">
+                <img src="{% static 'images/menu.svg' %}" alt="Menu">
+            </button>
+            <!-- Dropdown Content -->
+            <div id="mobile-dropdown-content" class="hidden absolute right-0 mt-2 py-2 bg-primary-bg-color rounded-lg shadow-lg">
+                <a href="#hero-section" class="block px-4 py-2 text-primary-text-color hover:bg-accent-color">Home</a>
+               
+                <a href="#ai-showcase-section" class="block px-4 py-2 text-primary-text-color hover:bg-accent-color">Examples</a>
+                <a href="#about-section" class="block px-4 py-2 text-primary-text-color hover:bg-accent-color">About</a>
+                
+            </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex space-x-8">
+          <li>
+            <a href="#hero-section" class="text-white text-lg"
+              > Home</a
+            >
+          </li>
+          
+          <li>
+            <a href="#ai-showcase-section" class="text-white text-lg"
+              > Examples</a
+            >
+          </li>
+          <li>
+            <a href="#about-section" class="text-white text-lg"
+              > About</a
+            >
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+
+    <div
+    id="hero-section"
+      class="hero bg-cover bg-center text-center py-0"
+      style="
+        background-image: url('{% static 'images/hero-bg.jpg' %}');
+        height: 100vh;
+      "
+    >
+      <div class="container mx-auto flex justify-center items-center h-full">
+        <div class="text-white">
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold mb-4">
+            Unlock Creativity with AI Image Composition.
+          </h2>
+          <p class="text-lg md:text-xl lg:text-2xl mb-8">
+            Turn Imagination into Reality.
+          </p>
+          <a href="{% url 'mainpage' %}" class="text-white text-lg">
+            <button
+              class="bg-accent-color text-white py-2 px-4 rounded hover:bg-accent-color-dark transition duration-300"
+            >
+              Get Started
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!--Introduction Section-->
+
+    <section  class="bg-primary-bg-color py-16"> <!-- Use the primary background color class -->
+      <div class="container mx-auto flex flex-col md:flex-row items-center">
+        <!-- Left Column - Introduction -->
+        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8 animate__animated animate__fadeInLeft">
+          <div class="p-4 md:p-6 lg:p-8">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl text-white font-semibold mb-4">
+              Unleash Your Imagination with AI Image Composition
+            </h2>
+            <p class="text-lg md:text-xl text-gray-300 mb-6">
+              Discover the extraordinary power of AI-driven creativity with PixelFusion. Immerse yourself in a world where imagination knows no bounds. PixelFusion empowers you to blend diverse AI-generated images, giving birth to unparalleled compositions that shatter norms and ignite innovation. Embark on a journey that transforms your visions into tangible reality, guided by the enchanting magic of AI Image Composition.
+            </p>
+            <a href="#" class="text-accent-color hover:underline">Explore the Possibilities</a>
+          </div>
+        </div>
+        <!-- Right Column - AI-generated Image -->
+        <div class="md:w-1/2 relative animate__animated animate__fadeInRight animate__delay-1s">
+          <div class="relative overflow-hidden rounded-lg max-h-96 md:max-h-auto ml-auto">
+            <img src="{% static 'images/intro-img (1).jpg' %}" alt="AI Generated Image" class="w-full h-auto rounded-lg shadow-md transform scale-95 transition duration-500 ease-out">
+            <div class="absolute inset-0 rounded-lg -10"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <!--Image Showcase Section-->
+
+    <section id="ai-showcase-section" class="bg-gray-900 py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl text-white font-semibold mb-8 text-center animate__animated animate__fadeIn">
+          AI Showcase
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <!-- AI-generated Image 1 -->
+          <div class="relative rounded-lg overflow-hidden">
+            <img src="{% static 'images/showcase1.jpg' %}" alt="AI Image" class="w-full h-auto">
+            <div class="absolute inset-0 bg-black bg-opacity-40 transition duration-300 opacity-0 hover:opacity-100">
+              <p class="text-white text-center p-2 absolute bottom-0 left-0 w-full">
+                Single fantasy hyperrealistic white lion
+              </p>
+            </div>
+          </div>
+          <!-- AI-generated Image 2 -->
+          <div class="relative rounded-lg overflow-hidden">
+            <img src="{% static 'images/showcase2.jpg' %}" alt="AI Image" class="w-full h-auto">
+            <div class="absolute inset-0 bg-black bg-opacity-40 transition duration-300 opacity-0 hover:opacity-100">
+              <p class="text-white text-center p-2 absolute bottom-0 left-0 w-full">
+                Ancient Incas posing in front of the temple
+              </p>
+            </div>
+          </div>
+          <!-- AI-generated Image 3 -->
+          <div class="relative rounded-lg overflow-hidden">
+            <img src="{% static 'images/showcase3.jpg' %}" alt="AI Image" class="w-full h-auto">
+            <div class="absolute inset-0 bg-black bg-opacity-40 transition duration-300 opacity-0 hover:opacity-100">
+              <p class="text-white text-center p-2 absolute bottom-0 left-0 w-full">
+                Springtime on a Fantasy Estate
+              </p>
+            </div>
+          </div>
+          <!-- AI-generated Image 4 -->
+          <div class="relative rounded-lg overflow-hidden">
+            <img src="{% static 'images/showcase4.jpg' %}" alt="AI Image" class="w-full h-auto">
+            <div class="absolute inset-0 bg-black bg-opacity-40 transition duration-300 opacity-0 hover:opacity-100">
+              <p class="text-white text-center p-2 absolute bottom-0 left-0 w-full">
+                Northern Lights
+              </p>
+            </div>
+          </div>
+          <!-- AI-generated Image 5 -->
+          <div class="relative rounded-lg overflow-hidden">
+            <img src="{% static 'images/showcase5.jpg' %}" alt="AI Image" class="w-full h-auto">
+            <div class="absolute inset-0 bg-black bg-opacity-40 transition duration-300 opacity-0 hover:opacity-100">
+              <p class="text-white text-center p-2 absolute bottom-0 left-0 w-full">
+                Midnight in Gotham
+              </p>
+            </div>
+          </div>
+          <!-- AI-generated Image 6 -->
+          <div class="relative rounded-lg overflow-hidden">
+            <img src="{% static 'images/showcase6.jpg' %}" alt="AI Image" class="w-full h-auto">
+            <div class="absolute inset-0 bg-black bg-opacity-40 transition duration-300 opacity-0 hover:opacity-100">
+              <p class="text-white text-center p-2 absolute bottom-0 left-0 w-full">
+                Magical forest
+              </p>
+            </div>
+          </div>
+          <!-- AI-generated Image 7 -->
+          <div class="relative rounded-lg overflow-hidden">
+            <img src="{% static 'images/showcase7.jpg' %}" alt="AI Image" class="w-full h-auto">
+            <div class="absolute inset-0 bg-black bg-opacity-40 transition duration-300 opacity-0 hover:opacity-100">
+              <p class="text-white text-center p-2 absolute bottom-0 left-0 w-full">
+                Victorian Living Room
+              </p>
+            </div>
+          </div>
+          <!-- AI-generated Image 8 -->
+          <div class="relative rounded-lg overflow-hidden">
+            <img src="{% static 'images/showcase8.jpg' %}" alt="AI Image" class="w-full h-auto">
+            <div class="absolute inset-0 bg-black bg-opacity-40 transition duration-300 opacity-0 hover:opacity-100">
+              <p class="text-white text-center p-2 absolute bottom-0 left-0 w-full">
+                Old abandon mansion
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: About the Technology -->
+<section id="about-section" class="bg-gray-900 py-16">
+  <div class="container mx-auto">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl text-white font-semibold text-center mb-8 animate__animated animate__fadeIn">
+          About the Technology
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-gray-900 text-gray-300 p-6 shadow-md rounded-lg">
+              <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-2">AI Technology Unleashed:</h3>
+              <p class="text-gray-400 mb-4">Discover the AI algorithm behind PixelFusion's artistic compositions.</p>
+              <ul class="list-disc list-inside">
+                  <li class="mb-2">Cutting-edge AI algorithms merge styles, content, and aesthetics.</li>
+                  <li class="mb-2">Advanced neural networks analyze images for lighting, color schemes, and textures.</li>
+                  <li class="mb-2">Intelligent combination creates new compositions blending visual elements.</li>
+              </ul>
+          </div>
+          <div class="bg-gray-900 text-gray-300 p-6 shadow-md rounded-lg">
+              <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-2">Enhancing Creativity:</h3>
+              <p class="text-gray-400 mb-4">Empower creativity through AI-driven composition generation.</p>
+              <ul class="list-disc list-inside">
+                  <li class="mb-2">Automated merging of styles and content opens innovative avenues.</li>
+                  <li class="mb-2">Access new possibilities and artistic horizons with ease.</li>
+                  <li class="mb-2">Leverage AI to craft stunning and captivating visual works.</li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- Section: Footer -->
+<footer class="bg-gray-800 py-6 text-gray-400">
+  <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Footer Branding and Copyright -->
+          <div class="text-center md:text-left">
+              <p>&copy; 2023 PixelFusion - AI Image Composition Studio</p>
+              <p class="text-sm mt-1">Built with <span class="text-accent-color">Django</span>, <span class="text-accent-color">Python</span>, and more.</p>
+          </div>
+          <!-- Footer Navigation Links -->
+<div class="flex justify-center md:justify-center md:justify-end mt-4 md:mt-0">
+  <ul class="flex space-x-6 md:space-x-8">
+      <li><a href="#hero-section" class="hover:text-accent-color">Home</a></li>
+      <li><a href="#ai-showcase-section" class="hover:text-accent-color">Examples</a></li>
+      <li><a href="#about-section" class="hover:text-accent-color">About</a></li>
+  </ul>
+</div>
+          <!-- Footer Contact and Social Links -->
+          <div class="flex justify-center md:justify-end mt-4 md:mt-0">
+              <ul class="flex space-x-4">
+                  <li><a href="hrishikeshmagadum09@gmail.com" class="hover:text-accent-color" target="_blank"><i class="fas fa-envelope"></i></a></li>
+                  <li><a href="https://www.linkedin.com/in/hrishikesh-magadum-323a431b3/" class="hover:text-accent-color" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                  <li><a href="https://github.com/hrishikeshm12" class="hover:text-accent-color" target="_blank"><i class="fab fa-github"></i></a></li>
+                  <li><a href="https://hrishikeshmagadum.online/" class="hover:text-accent-color" target="_blank"><i class="fas fa-globe"></i></a></li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</footer>
+
+
+
+  
+  
+    
+    
+    
+  
+  
+  
+  
+  
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        // Toggle mobile menu
+        document.addEventListener("DOMContentLoaded", function () {
+          const mobileDropdownButton = document.getElementById('mobile-dropdown-button');
+          const mobileDropdownContent = document.getElementById('mobile-dropdown-content');
+      
+          mobileDropdownButton.addEventListener('click', () => {
+              mobileDropdownContent.classList.toggle('hidden');
+          });
+          
+          // Close dropdown if clicked outside
+          document.addEventListener('click', (event) => {
+              if (!mobileDropdownButton.contains(event.target) && !mobileDropdownContent.contains(event.target)) {
+                  mobileDropdownContent.classList.add('hidden');
+              }
+          });
+      });
+      </script>
+  </body>
+</html>

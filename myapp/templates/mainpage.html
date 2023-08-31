@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelFusion</title>
+    <!-- Link to your CSS files if needed -->
+    <!-- Add the following line to link your CSS file -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <!-- Link to Tailwind CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Link to Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Include the Semantic UI CSS CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link
+      rel="icon"
+      href="{% static 'images/logo-color.png' %}"
+      type="image/png"
+    />
+
+    <!-- Load Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-primary-bg-color text-primary-text-color font-sans">
+    <nav
+      class="semi-transparent-bg bg-primary-bg-color p-5 fixed w-full top-0 z-50"
+    >
+      <div class="container mx-auto flex items-center justify-between">
+        <a href="#" class="flex items-center text-white text-3xl font-semibold">
+          <img
+            src="{% static 'images/logo-no-bg.png' %}"
+            alt="Logo"
+            class="w-10 h-10 mr-2"
+          />
+          PixelFusion
+        </a>
+        <!-- Navbar for Small Devices (Mobile) -->
+        <div id="mobile-menu" class="hidden md:hidden">
+          <a
+            href="#hero-section"
+            class="block px-4 py-2 text-primary-text-color hover:bg-primary-bg-color"
+            >Home</a
+          >
+          
+          <a
+            href="{% url 'gallery' %}"
+            class="block px-4 py-2 text-primary-text-color hover:bg-primary-bg-color"
+            >Gallery</a
+          >
+          <a
+            href="#about-section"
+            class="block px-4 py-2 text-primary-text-color hover:bg-primary-bg-color"
+            >About</a
+          >
+          
+        </div>
+
+        <!-- Mobile Dropdown Button -->
+        <div class="relative inline-block text-white md:hidden">
+            <button id="mobile-dropdown-button" class="w-6 h-6">
+                <img src="{% static 'images/menu.svg' %}" alt="Menu">
+            </button>
+            <!-- Dropdown Content -->
+            <div id="mobile-dropdown-content" class="hidden absolute right-0 mt-2 py-2 bg-primary-bg-color rounded-lg shadow-lg">
+                <a href="#hero-section" class="block px-4 py-2 text-primary-text-color hover:bg-accent-color">Home</a>
+               
+                <a href="{% url 'gallery' %}" class="block px-4 py-2 text-primary-text-color hover:bg-accent-color">Gallery</a>
+                <a href="#about-section" class="block px-4 py-2 text-primary-text-color hover:bg-accent-color">About</a>
+                
+            </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex space-x-8">
+          <li>
+            <a href="#hero-section" class="text-white text-lg"
+              > Home</a
+            >
+          </li>
+          
+          <li>
+            <a href="{% url 'gallery' %}" class="text-white text-lg"
+              > Gallery</a
+            >
+          </li>
+          <li>
+            <a href="#about-section" class="text-white text-lg"
+              > About</a
+            >
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+
+    
+    <main class="container mx-auto mt-20">
+      <div class="p-4 md:px-12">
+          <!-- Common Prompt -->
+          <div class="bg-gray-900 shadow-lg p-6 rounded mb-8">
+              <h2 class="text-xl font-semibold text-white mb-4">Generate Hybrid Images</h2>
+              <p class="text-gray-300 mb-4">Enter a prompt that will be used to generate images from both models.</p>
+              <textarea id="common-prompt" class="w-full h-24 bg-gray-800 border rounded p-2 mb-4 text-white" placeholder="Enter your prompt"></textarea>
+              
+              <!-- Generate Buttons -->
+              <div class="flex justify-center space-x-4">
+                  <button id="generate-openai-images" class="bg-blue-500 hover:bg-blue-400 px-4 py-2 rounded text-white">Generate OpenAI Image</button>
+                  <button id="generate-stablediffusion-images" class="bg-green-500 hover:bg-green-400 px-4 py-2 rounded text-white">Generate Stable Diffusion Image</button>
+              </div>
+          </div>
+          
+          <div class="flex space-x-4">
+              <!-- OpenAI Model Section -->
+              <section class="bg-gray-900 border border-white shadow-lg p-6 rounded w-1/2">
+                <h2 class="text-xl font-semibold text-white mb-4">OpenAI Model Images</h2>
+                <p class="text-gray-300 mb-4">Images generated using the OpenAI model based on the prompt.</p>
+                <div class="grid grid-cols-1 gap-4 relative">
+                    <div class="relative w-64 h-64 bg-white rounded p-4">
+                        <img id="openai-generated-image" class="object-contain w-full h-full" src="" >
+                        <div id="openai-loading" class="absolute inset-0 flex items-center justify-center hidden">
+                            <i class="fas fa-spinner fa-spin text-gray-400"></i>
+                        </div>
+                    </div>
+                    <div class="absolute top-0 right-0 flex flex-col space-y-4 mt-2 mr-2">
+                        <button id="openai-download-button" class="bg-blue-500 hover:bg-blue-400 px-2 py-1 rounded text-white">
+                            <i class="download icon"></i> Download
+                        </button>
+                        <button id="openai-transform-button" class="bg-green-500 hover:bg-green-400 px-2 py-1 rounded text-white">
+                            <i class="sync icon"></i> Transform
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            
+            
+          
+            <section class="bg-gray-900 border border-white shadow-lg p-6 rounded w-1/2">
+              <h2 class="text-xl font-semibold text-white mb-4">Stable Diffusion Model Images</h2>
+              <p class="text-gray-300 mb-4">Images generated using the Stable Diffusion model based on the prompt.</p>
+              <div class="grid grid-cols-1 gap-4 relative">
+                  <div class="relative w-64 h-64 bg-white rounded p-4">
+                      <img id="stablediffusion-generated-image" class="object-contain w-full h-full" src="" >
+                      <div id="stablediffusion-loading" class="absolute inset-0 flex items-center justify-center hidden">
+                          <i class="fas fa-spinner fa-spin text-gray-400"></i>
+                      </div>
+                  </div>
+                  <div class="absolute top-0 right-0 flex flex-col space-y-4 mt-2 mr-2">
+                      <button id="stablediffusion-download-button" class="bg-blue-500 hover:bg-blue-400 px-2 py-1 rounded text-white">
+                          <i class="download icon"></i> Download
+                      </button>
+                      <button id="stablediffusion-transform-button" class="bg-green-500 hover:bg-green-400 px-2 py-1 rounded text-white">
+                          <i class="sync icon"></i> Transform
+                      </button>
+                  </div>
+              </div>
+          </section>
+          
+
+       
+
+          </div>
+    
+
+<!-- Image Style Transfer Section -->
+
+<section class="bg-gray-900 border border-white shadow-lg p-6 rounded mt-4">
+  <h2 class="text-xl font-semibold text-white mb-4">Image Style Transfer</h2>
+  <p class="text-gray-300 mb-4">Perform image style transfer using the generated model images.</p>
+
+  <!-- Image Transfer Containers -->
+  <div class="grid grid-cols-3 gap-8">
+      <!-- Image to be Transformed -->
+      <div class="flex flex-col items-center">
+          <h3 class="font-semibold text-white mb-2">AI Generated Image</h3>
+          <div class="bg-white w-64 h-64 rounded p-4">
+              <img id="ai-generated-image" class="bg-cover w-full h-full" src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Green_Sea_Turtle_grazing_seagrass.jpg">
+          </div>
+      </div>
+
+      <!-- Style Image Container with Dropdown -->
+      <div class="flex flex-col items-center">
+          <h3 class="font-semibold text-white mb-2">Style Image</h3>
+          <div class="bg-white w-64 h-64 rounded p-4 mt-2">
+              <img id="style-image" class="bg-cover w-full h-full" src="https://upload.wikimedia.org/wikipedia/commons/0/0a/The_Great_Wave_off_Kanagawa.jpg" alt="Style Image">
+          </div>
+          <select id="style-dropdown" class="mt-3 bg-gray-800 p-2 rounded border-none focus:outline-none focus:ring-2 focus:ring-purple-600 w-64">
+              <option value="">Select Style</option>
+          </select>
+      </div>
+
+      <!-- Transformed Image Container -->
+      <div class="flex flex-col items-center relative">
+        <h3 class="font-semibold text-white mb-2">Transformed Image</h3>
+        <div class="bg-white w-64 h-64 rounded p-4">
+            <img id="transformed-image" class="bg-cover w-full h-full" src="">
+            <div id="transformed-image-loading" class="absolute inset-0 flex items-center justify-center hidden">
+              <i  class="fas fa-spinner fa-spin text-gray-400"></i>
+            </div>
+        </div>
+        <div class="flex justify-center mt-3">
+            <button id="save-transformed-image" class="bg-blue-500 hover:bg-blue-400 px-4 py-2 rounded text-white">
+                Save to Gallery
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Perform Style Transfer Button -->
+<div class="flex justify-center mt-4">
+    <button id="perform-style-transfer" class="bg-green-500 hover:bg-purple-400 px-4 py-2 rounded text-white">
+        Perform Style Transfer
+    </button>
+</div>
+</section>
+
+
+
+
+        
+      </div>
+  </main>
+  
+  
+  
+    
+
+
+  <script src="https://kit.fontawesome.com/3efe8700d9.js" crossorigin="anonymous"></script>
+
+    <script src="{% static 'js/image-script.js' %}"></script>
+
+    
+
+    
+  </body>
+</html>
