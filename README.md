@@ -1,6 +1,6 @@
-# AI Image Generation App
+# Pixel Fusion
 
-The AI Image Generation App is a sophisticated web application designed to harness the power of cutting-edge AI models for creating stunning images. This project showcases the capabilities of AI technologies such as OpenAI, Stable Diffusion, and Fast Style Transfer for Arbitrary Styles. These models empower users to produce captivating images with distinct styles, enabling real-time stylization and customization.
+Pixel Fusion is a sophisticated web application designed to harness the power of cutting-edge AI models to create stunning images. This project showcases the capabilities of AI technologies such as OpenAI, Stable Diffusion, and Fast Style Transfer for Arbitrary Styles. These models empower users to produce captivating images with distinct styles, enabling real-time stylization and customization.
 # Home Page
 ![landing page1](https://github.com/hrishikeshm12/AI-Image-Generation-App/assets/65590350/6ec7782b-1752-4fc2-abb0-10a54f055975)
 ![landing page2](https://github.com/hrishikeshm12/AI-Image-Generation-App/assets/65590350/8ce38c86-6611-4cbb-9563-ad6d2675e960)
